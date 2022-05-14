@@ -1,0 +1,25 @@
+.label {
+  font-weight: bold;
+}
+
+.cast {
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-right: 0.5ch;
+}
+
+.voices {
+  /* font-style: italic; */
+  font-weight: bold;
+  color: var(--pink);
+  /* font-size: 0.8em; */
+}
+
+.bar {
+  height: 0.75em;
+  background: linear-gradient(-19deg, var(--pink), var(--ligthBlue));
+  background: -webkit-linear-gradient(-19deg, var(--pink), var(--ligthBlue));
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 0.5ch;
+}
