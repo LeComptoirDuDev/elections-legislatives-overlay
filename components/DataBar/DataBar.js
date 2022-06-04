@@ -1,4 +1,8 @@
 export class DataBar extends HTMLElement {
+  static lisibleNumber(voices) {
+    return voices.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ' ");
+  }
+
   static get observedAttributes() {
     return ["label", "cast", "voices"];
   }
@@ -35,6 +39,8 @@ export class DataBar extends HTMLElement {
     this.label.textContent = this.getAttribute("label");
     this.bar.setAttribute("style", `width: ${this.getAttribute("cast")}%`);
     this.cast.textContent = `${this.getAttribute("cast")} %`;
-    this.voices.textContent = `(${this.getAttribute("voices")} voix)`;
+    this.voices.textContent = `(${DataBar.lisibleNumber(
+      this.getAttribute("voices")
+    )} voix)`;
   }
 }
