@@ -1,25 +1,25 @@
-// const url = "http://127.0.0.1:5500/mock.html";
 const url =
-  "https://www.resultats-elections.interieur.gouv.fr/legislatives-2022/FE.html";
+  "https://elections-legislatives-overlay-hp532tbz6-lecomptoirdudev.vercel.app/mock.html";
+// const url =
+//   "https://www.resultats-elections.interieur.gouv.fr/legislatives-2022/FE.html";
 
 let timer;
-function fetchPage() {
+function initDataBarDirectValue(mention) {
   fetch(url)
     .then((response) => {
       return response.arrayBuffer();
     })
     .then((buffer) => {
-      console.log("update");
+      console.log("update :", mention);
       const decoder = new TextDecoder("iso-8859-15");
       const data = decoder.decode(buffer);
-      processFetchedData(data);
+      processFetchedData(data, mention);
       clearInterval(timer);
-      timer = setInterval(fetchPage, 10000);
+      timer = setInterval(() => initDataBarDirectValue(mention), 10000);
     });
 }
-fetchPage();
 
-function processFetchedData(resultPage) {
+function processFetchedData(resultPage, mention) {
   const doc = new DOMParser().parseFromString(resultPage, "text/html");
   console.log(doc);
   const classResult = "tableau-mentions";
@@ -27,7 +27,7 @@ function processFetchedData(resultPage) {
   const table = doc.querySelector(`.${classResult}`);
 
   const mentions = parseTable(table);
-  displayResults(mentions);
+  displayResults(mentions, mention);
 }
 
 function parseTable(tableDOM) {
@@ -51,16 +51,10 @@ function parseTable(tableDOM) {
   return mentions;
 }
 
-function displayResults(mentions) {
+function displayResults(mentions, mention) {
   const dataBar = document.querySelector("data-bar");
-  dataBar.setAttribute(
-    "cast",
-    getDataFromMention("Abstentions", mentions).voterCast
-  );
-  dataBar.setAttribute(
-    "voices",
-    getDataFromMention("Abstentions", mentions).voices
-  );
+  dataBar.setAttribute("cast", getDataFromMention(mention, mentions).voterCast);
+  dataBar.setAttribute("voices", getDataFromMention(mention, mentions).voices);
 }
 
 function getDataFromMention(mention, mentions) {

@@ -7,7 +7,7 @@ export class DataBar extends HTMLElement {
     return ["label", "cast", "voices"];
   }
 
-  constructor() {
+  constructor(baseUrl) {
     super();
 
     const shadow = this.attachShadow({ mode: "closed" });
@@ -28,7 +28,7 @@ export class DataBar extends HTMLElement {
 
     const styleLink = document.createElement("link");
     styleLink.setAttribute("rel", "stylesheet");
-    styleLink.setAttribute("href", "components/DataBar/DataBar.css");
+    styleLink.setAttribute("href", `../components/DataBar/DataBar.css`);
 
     shadow.appendChild(styleLink);
     shadow.appendChild(wrapper);
