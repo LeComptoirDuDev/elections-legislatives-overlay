@@ -7,7 +7,7 @@ export class DataBar extends HTMLElement {
     return ["label", "cast", "voices"];
   }
 
-  constructor(baseUrl) {
+  constructor() {
     super();
 
     const shadow = this.attachShadow({ mode: "closed" });
