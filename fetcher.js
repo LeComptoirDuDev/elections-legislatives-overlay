@@ -1,7 +1,7 @@
-const url =
-  "https://elections-legislatives-overlay-hp532tbz6-lecomptoirdudev.vercel.app/mock.html";
 // const url =
-//   "https://www.resultats-elections.interieur.gouv.fr/legislatives-2022/FE.html";
+// "https://elections-legislatives-overlay-hp532tbz6-lecomptoirdudev.vercel.app/mock.html";
+const url =
+  "https://www.resultats-elections.interieur.gouv.fr/legislatives-2022/FE.html";
 
 let timer;
 function initDataBarDirectValue(mention) {
