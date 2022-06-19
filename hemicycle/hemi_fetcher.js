@@ -1,9 +1,9 @@
 // const url =
 // "https://elections-legislatives-overlay-hp532tbz6-lecomptoirdudev.vercel.app/mock.html";
-// const url =
-//   "https://www.resultats-elections.interieur.gouv.fr/legislatives-2022/FE.html";
 const url =
-  "https://www.interieur.gouv.fr/Elections/Les-resultats/Legislatives/elecresult__legislatives-2017/(path)/legislatives-2017//FE.html";
+  "https://www.resultats-elections.interieur.gouv.fr/legislatives-2022/FE.html";
+// const url =
+//   "https://www.interieur.gouv.fr/Elections/Les-resultats/Legislatives/elecresult__legislatives-2017/(path)/legislatives-2017//FE.html";
 
 const svg = document.querySelector("#hemicycle");
 
