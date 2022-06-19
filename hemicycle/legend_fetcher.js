@@ -12,23 +12,17 @@ const url =
 const svg = document.querySelector("#hemicycle");
 
 const nuances = {
-  "Extrême gauche": "DarkRed",
-  "Parti communiste français": "Red",
-  "La France insoumise": "Crimson",
-  "Parti socialiste": "LightCoral",
-  "Parti radical de gauche": "LightSalmon",
+  "Divers extrême gauche": "DarkRed",
+  "Nouvelle union populaire écologique et sociale": "Red",
   "Divers gauche": "Brown",
-  Ecologiste: "Green",
   Divers: "Grey",
   Régionaliste: "SaddleBrown",
-  "La République en marche": "DarkViolet",
-  Modem: "DarkOrange",
-  "Union des Démocrates et Indépendants": "RoyalBlue",
+  "Ensemble ! (Majorité présidentielle)": "DarkViolet",
+  "Divers centre": "DarkOrange",
+  "Union des Démocrates et des Indépendants": "RoyalBlue",
   "Les Républicains": "MediumBlue",
   "Divers droite": "DodgerBlue",
-  "Debout la France": "DarkBlue",
-  "Front National": "MidnightBlue",
-  "Extrême droite": "Black",
+  "Rassemblement National": "Black",
 };
 
 let timer;
@@ -38,7 +32,7 @@ function fetchData() {
       return response.arrayBuffer();
     })
     .then((buffer) => {
-      const decoder = new TextDecoder("utf-8");
+      const decoder = new TextDecoder("iso-8859-15");
       const data = decoder.decode(buffer);
       processFetchedData(data);
       clearInterval(timer);
@@ -51,8 +45,7 @@ function processFetchedData(resultPage) {
   const doc = new DOMParser().parseFromString(resultPage, "text/html");
   console.log(doc);
 
-  const table = doc.querySelector(`table:not(.tableau-resultats-listes-ER)`);
-
+  const table = doc.querySelector(`.tableau-resultats-listes-ER`);
   const results = parseTable(table);
   displayData(results);
   console.log(results);
