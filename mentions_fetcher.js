@@ -4,7 +4,7 @@ const url =
   "https://www.resultats-elections.interieur.gouv.fr/legislatives-2022/FE.html";
 
 let timer;
-function initDataBarDirectValue(mention) {
+function fetchData(mention) {
   fetch(url)
     .then((response) => {
       return response.arrayBuffer();
@@ -15,7 +15,7 @@ function initDataBarDirectValue(mention) {
       const data = decoder.decode(buffer);
       processFetchedData(data, mention);
       clearInterval(timer);
-      timer = setInterval(() => initDataBarDirectValue(mention), 10000);
+      timer = setInterval(() => fetchData(mention), 10000);
     });
 }
 
